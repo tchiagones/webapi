@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{45D66262-8ED3-46C5-B9F8-6046DDE600E5}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DP.ProductionOrderWebApi</RootNamespace>
+    <AssemblyName>DP.ProductionOrderWebApi</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DP.Framework.Domain">
+      <HintPath>..\Library\Framework\DP.Framework.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="DP.Framework.Factory, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CCM_2.0\bin\DP.Framework.Factory.dll</HintPath>
+    </Reference>
+    <Reference Include="DP.Framework.Integration">
+      <HintPath>..\Library\Framework\DP.Framework.Integration.dll</HintPath>
+    </Reference>
+    <Reference Include="DP.Framework.Resources">
+      <HintPath>..\Library\Framework\DP.Framework.Resources.dll</HintPath>
+    </Reference>
+    <Reference Include="DP.Framework.Utils">
+      <HintPath>..\Library\Framework\DP.Framework.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Unity.2.1.505.2\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\EntryControlController.cs" />
+    <Compile Include="Controllers\MemoryController.cs" />
+    <Compile Include="Controllers\ProductionOrderController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EntryControlDatabaseRow.cs" />
+    <Compile Include="Models\EntryControlFactory.cs" />
+    <Compile Include="Models\ProductionOrderFactory.cs" />
+    <Compile Include="Models\ProductionOrderConsolidatedDatabaseRow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnityBootstrapper.cs" />
+    <Compile Include="Utils\Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ClassesCompartilhadas\clsComum\clsComum.vbproj">
+      <Project>{DC8DFF09-9A99-4C9E-9BF6-6712F454E8BD}</Project>
+      <Name>clsComum</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Data\DP.CCM.Data.csproj">
+      <Project>{9CB4B181-A9A3-4BCA-A410-91D8FF71D679}</Project>
+      <Name>DP.CCM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Entity\DP.CCM.Entity.csproj">
+      <Project>{8F9F7442-9831-491C-982C-C7D7FBC550E9}</Project>
+      <Name>DP.CCM.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Interface\DP.CCM.Interface.csproj">
+      <Project>{B98C2D2A-EA87-489F-85AE-657D5D83996A}</Project>
+      <Name>DP.CCM.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Administration.Interface\DP.CCM.Modules.Administration.Interface.csproj">
+      <Project>{F4CE565B-6316-431B-A38C-5B9CD0317A89}</Project>
+      <Name>DP.CCM.Modules.Administration.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Administration.Tests\DP.CCM.Modules.Administration.Tests.csproj">
+      <Project>{3612A241-EE4E-4E27-9A40-A441F9EB4ED0}</Project>
+      <Name>DP.CCM.Modules.Administration.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Administrationl.Repository\DP.CCM.Modules.Administration.Repository.csproj">
+      <Project>{578C4E69-88B8-4B00-8CA1-12E5DF33DA78}</Project>
+      <Name>DP.CCM.Modules.Administration.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Administrationl.Service\DP.CCM.Modules.Administration.Service.csproj">
+      <Project>{23E9EEE9-7B00-4736-8FBE-BC7D2B14A07B}</Project>
+      <Name>DP.CCM.Modules.Administration.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Configuration.Interface\DP.CCM.Modules.Configuration.Interface.csproj">
+      <Project>{ED6E187F-4693-4C17-ADBD-70C74DF2EC69}</Project>
+      <Name>DP.CCM.Modules.Configuration.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Configuration.Repository\DP.CCM.Modules.Configuration.Repository.csproj">
+      <Project>{03C1C56F-F764-469C-8A16-8DADAAD2FFDC}</Project>
+      <Name>DP.CCM.Modules.Configuration.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Configuration.Service\DP.CCM.Modules.Configuration.Service.csproj">
+      <Project>{B3255A00-EC03-4552-932E-1EF3909F1987}</Project>
+      <Name>DP.CCM.Modules.Configuration.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Configuration.UnitTest\DP.CCM.Modules.Configuration.UnitTest.csproj">
+      <Project>{828C208A-BAE2-4AF0-AF2D-8B61F1F6C4A4}</Project>
+      <Name>DP.CCM.Modules.Configuration.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigMail.Interface\DP.CCM.Modules.DigMail.Interface.csproj">
+      <Project>{FFDCEA6C-67AC-4FDF-8272-5FE7D9F42413}</Project>
+      <Name>DP.CCM.Modules.DigMail.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigMail.Repository\DP.CCM.Modules.DigMail.Repository.csproj">
+      <Project>{081DD1CE-5E98-4932-B155-817E0F0348CD}</Project>
+      <Name>DP.CCM.Modules.DigMail.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigMail.Service\DP.CCM.Modules.DigMail.Service.csproj">
+      <Project>{B9938DB6-DB7B-4A62-B20F-DBEAE5C603F0}</Project>
+      <Name>DP.CCM.Modules.DigMail.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigMail.Specification\DP.CCM.Modules.DigMail.Specification.csproj">
+      <Project>{38B77B55-C753-49E0-AF2F-95122BBA35C9}</Project>
+      <Name>DP.CCM.Modules.DigMail.Specification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigMail.UnitTest\DP.CCM.Modules.DigMail.UnitTest.csproj">
+      <Project>{BE83CC9A-6E87-4D0F-9A53-74D554E1FFE5}</Project>
+      <Name>DP.CCM.Modules.DigMail.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS.API\DP.CCM.Modules.DigSMS.Wcf.csproj">
+      <Project>{172D3051-E61C-4739-87B7-DB60BC84B81A}</Project>
+      <Name>DP.CCM.Modules.DigSMS.Wcf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS.Interface\DP.CCM.Modules.DigSMS.Interface.csproj">
+      <Project>{0453D976-86DA-4C14-AB48-8B1107C7CEAC}</Project>
+      <Name>DP.CCM.Modules.DigSMS.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS.Model\DP.CCM.Modules.DigSMS.Model.csproj">
+      <Project>{5E95DAF4-E55C-45C9-80F6-6C21979643D2}</Project>
+      <Name>DP.CCM.Modules.DigSMS.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS.Service\DP.CCM.Modules.DigSMS.Service.csproj">
+      <Project>{5E75E5A4-ACB5-4ED1-A43A-16761F237847}</Project>
+      <Name>DP.CCM.Modules.DigSMS.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS.Specification\DP.CCM.Modules.DigSMS.Specification.csproj">
+      <Project>{D613B051-AEE4-49CF-B838-BF0B0AC7D597}</Project>
+      <Name>DP.CCM.Modules.DigSMS.Specification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS.Test\DP.CCM.Modules.DigSMS.Test.csproj">
+      <Project>{69EEB725-E104-495B-A974-83BAA16FBD07}</Project>
+      <Name>DP.CCM.Modules.DigSMS.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS.WinService\DP.CCM.Modules.DigSMS.WinService.csproj">
+      <Project>{93FF0EC0-ED6F-483F-A2F4-262A595C548E}</Project>
+      <Name>DP.CCM.Modules.DigSMS.WinService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.DigSMS\DP.CCM.Modules.DigSMS.Repository.csproj">
+      <Project>{95A25563-CD71-431A-8971-4F1C4BD3A7A5}</Project>
+      <Name>DP.CCM.Modules.DigSMS.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ECM.Interface\DP.CCM.Modules.ECM.Interface.csproj">
+      <Project>{62569C16-EBCE-41BB-B2E5-579EDA89F6B6}</Project>
+      <Name>DP.CCM.Modules.ECM.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ECM.Models\DP.CCM.Modules.ECM.Model.csproj">
+      <Project>{890A756C-3591-4CA6-8B90-EBDE7C2F9C28}</Project>
+      <Name>DP.CCM.Modules.ECM.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ECM.Repository\DP.CCM.Modules.ECM.Repository.csproj">
+      <Project>{C46E7F95-E728-4B6E-9B0A-9F2418564506}</Project>
+      <Name>DP.CCM.Modules.ECM.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ECM.Service\DP.CCM.Modules.ECM.Service.csproj">
+      <Project>{9D39E804-F851-42C6-9F33-922A9119B159}</Project>
+      <Name>DP.CCM.Modules.ECM.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ECM.Tests\DP.CCM.Modules.ECM.Tests.csproj">
+      <Project>{B67250E9-D0F2-4B43-BB96-284CDE5C8BE8}</Project>
+      <Name>DP.CCM.Modules.ECM.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.Interface\DP.CCM.Modules.EntryControl.Interface.csproj">
+      <Project>{F6554778-2C08-4E32-8653-9C65660BA3A3}</Project>
+      <Name>DP.CCM.Modules.EntryControl.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.Repository\DP.CCM.Modules.EntryControl.Repository.csproj">
+      <Project>{155F9F9A-E5A5-411D-8222-FF297F73CAEF}</Project>
+      <Name>DP.CCM.Modules.EntryControl.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.Resources\DP.CCM.Modules.EntryControl.Resources.csproj">
+      <Project>{1EF880EE-E21B-4BB3-8750-E49648DDBBB9}</Project>
+      <Name>DP.CCM.Modules.EntryControl.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.Service\DP.CCM.Modules.EntryControl.Service.csproj">
+      <Project>{029BA7E6-B510-4C6A-ADFA-2D19E9180ED5}</Project>
+      <Name>DP.CCM.Modules.EntryControl.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.Specification\DP.CCM.Modules.EntryControl.Specification.csproj">
+      <Project>{031F5772-837D-47AF-8DBB-312B4358A796}</Project>
+      <Name>DP.CCM.Modules.EntryControl.Specification</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.UnitTest\DP.CCM.Modules.EntryControl.UnitTest.csproj">
+      <Project>{CAA3EAEA-C2C2-44CF-B87F-62E0453D42C2}</Project>
+      <Name>DP.CCM.Modules.EntryControl.UnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.Wcf\DP.CCM.Modules.EntryControl.Wcf.csproj">
+      <Project>{CECBD986-11D8-4D1C-8302-F26CA6F1E8C6}</Project>
+      <Name>DP.CCM.Modules.EntryControl.Wcf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.EntryControl.Win.API\DP.CCM.Modules.EntryControl.Win.API.csproj">
+      <Project>{F25B252F-B5B5-4DAA-9327-A90609613D70}</Project>
+      <Name>DP.CCM.Modules.EntryControl.Win.API</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ProductionControl.Interface\DP.CCM.Modules.ProductionControl.Interface.csproj">
+      <Project>{31F9796D-95F3-4AA9-B559-DCAD580B4F9E}</Project>
+      <Name>DP.CCM.Modules.ProductionControl.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ProductionControl.Repository\DP.CCM.Modules.ProductionControl.Repository.csproj">
+      <Project>{CE589F0E-C376-4626-87A7-D6C319C0AE0B}</Project>
+      <Name>DP.CCM.Modules.ProductionControl.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.ProductionControl.Service\DP.CCM.Modules.ProductionControl.Service.csproj">
+      <Project>{76EE079E-FC12-4473-A45E-D36CB01D41CF}</Project>
+      <Name>DP.CCM.Modules.ProductionControl.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Security.Interface\DP.CCM.Modules.Security.Interface.csproj">
+      <Project>{E0A68264-B364-46B0-8ECD-48BEDF1BD15F}</Project>
+      <Name>DP.CCM.Modules.Security.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Security.Repository\DP.CCM.Modules.Security.Repository.csproj">
+      <Project>{8D386D7C-A05E-4F2A-917F-AE13CE6FB6B0}</Project>
+      <Name>DP.CCM.Modules.Security.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DP.CCM.Modules.Security.Service\DP.CCM.Modules.Security.Service.csproj">
+      <Project>{08C79FD4-ECFE-4881-9595-9611CE350F10}</Project>
+      <Name>DP.CCM.Modules.Security.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63961</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,586 @@
+﻿@{
+    ViewBag.Title = "SendCampaign";
+}
+
+<style>
+    .numeberChoose { border:1px solid #D7D7D7; height:25px; width:70px; }
+
+    .separatorDiv { width:150px; text-align:right; padding-right:20px; '}
+    .checker { margin-top: 0px!important; }
+    .datepicker { width: 78px!important; }
+    .ui-datepicker { z-index:1000 !important; }
+    .divCalendar { border: 1px solid #d5d5d5; display: block; background: #fafafa; border-top: none; }
+    .divCalendar div#calendar table.fc-header tbody tr td.fc-header-left { visibility: hidden!important; }
+    .divCalendar div#calendar table.fc-header tbody tr td.fc-header-right { visibility:hidden!important; }
+    .divCalendar div#calendar table.fc-header tbody tr td.fc-header-center { visibility: hidden!important; }
+</style>
+
+<div class="wrapper">
+    <div class="content">
+        <fieldset>
+            <div class="widget first">
+                <div class="head"><h5 class="iFrames">Nova campanha</h5></div>
+                <div style="width: 47%; padding-left:30px; margin-top:10px"><b>Programar envio da campanha:</b></div>
+                <div style="width: 47%; float:left; padding-left:30px; margin-top:10px">
+                    <div class="divCalendar">
+				        <div class="head"></div>
+				        <div id="calendar"></div>
+			        </div>
+             @*       <div  id="calendar"  class="calendar"></div>*@
+                </div>
+                <div style="width: 47%; float:left; padding-left:30px; margin-top:40px">
+                    <div>
+                        <input type="checkbox" value=""/><b>&nbsp;&nbsp;Repetir envio</b>
+                    </div>
+                    <table style="width:100%; margin-top:25px;">
+                        <tr>
+                            <td>
+                                <table style="margin-bottom: 10px;">
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Repetição</b></div>
+                                        </td>
+                                        <td>
+                                            <select class="styleded clsSituacao" id="sltRepeater" name="sltRepeater">
+                                                <option value="allMonth">Mensal</option>
+                                                <option value="allDay">Todos os dias</option>
+                                                <option value="allMonWenFri">Todas as segundas, quartas e sextas</option>
+                                                <option value="allWeek">Semanal</option>
+                                                <option value="allYear">Anual</option>
+                                                <option value="allDayWeek">Todos os dias da semana (segunda a sexta-feira)</option>
+                                                <option value="allTueThu">Todas as terças e quintas-feiras</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="allMonth genericShowTr">
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Repete a cada:</b></span>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="numeberChoose" id="numRepeatAllMonth" value="10"/><label>&nbsp;Meses</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Repetir:</b></span>
+                                        </td>
+                                        <td>
+                                            <input type="radio" name="reptAllMonth" for="radio1"/><div style="float:left; vertical-align:middle; margin-top: 5px; padding-right:10px"><label for="radio1">dia do mês</label></div>
+                                            <input type="radio" name="reptAllMonth" for="radio2"/><div style="float:left; vertical-align:middle; margin-top: 5px;"><label for="radio2">dia do semana</label></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Início em:</b></span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("dateAllMonth", "", new { @class = "datepicker", data_alt_field = "#dateAllMonth" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Termina em:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllMonthFinish" class="rdoAllMonth" id="rdoAllMonthAwlays" data_choose="Sempre"/></td>
+                                                    <td><label>Sempre</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllMonthFinish" class="rdoAllMonth" id="rdoAllMonthAfter" data_choose="Apos"/></td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Após</label>
+                                                            <input type="text" class="numeberChoose" id="numRepeatAllMonthFinish"/>
+                                                            <label>ocorrências</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllMonthFinish" class="rdoAllMonth" id="rdoAllMonthAt" data_choose="Em"/></td>
+                                                    <td>
+                                                        <label>Em</label>
+                                                        @Html.TextBox("dateFinishAllMonth", "", new { @class = "datepicker", data_alt_field = "#dateFinishAllMonth" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Resumo:</b></span></td>
+                                        <td><b>Todos os dias, <label id="feedBackAllMonth"></label></b></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="allDay genericShowTr">
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Repete a cada</b></span></td>
+                                        <td><input type="text" class="numeberChoose" id="numRepeatAllDay" value=""/><label>&nbsp;dias</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Início em:</b></span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("dateAllDay", "", new { @class = "datepicker", data_alt_field = "#dateAllDay" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Termina em:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllDayFinish" class="rdoAllDay" id="rdoAllDayAwlays" data_choose="Sempre"/></td>
+                                                    <td><label>Sempre</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllDayFinish" class="rdoAllDay" id="rdoAllDayAfter" data_choose="Apos"/></td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Após</label>
+                                                            <input type="text" class="numeberChoose" id="numRepeatAllDayFinish"/>
+                                                            <label>ocorrências</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllDayFinish" class="rdoAllDay" id="rdoAllDayAt" data_choose="Em"/></td>
+                                                    <td>
+                                                        <label>Em</label>
+                                                        @Html.TextBox("dateFinishAllDay", "", new { @class = "datepicker", data_alt_field = "#dateFinishAllDay" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Resumo:</b></span></td>
+                                        <td><b>Todos os dias, <label id="feedBackAllDay"></label></b></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="allMonWenFri genericShowTr">
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Início em:</b></span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("dateAllMonWenFri", "", new { @class = "datepicker", data_alt_field = "#dateAllMonWenFri" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Termina em:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllMonWenFriFinish" class="rdoAllMonWenFri" id="rdoAllMonWenFriAwlays" data_choose="Sempre"/></td>
+                                                    <td><label>Sempre</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllMonWenFriFinish" class="rdoAllMonWenFri" id="rdoAllMonWenFriAfter" data_choose="Apos"/></td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Após</label>
+                                                            <input type="text" class="numeberChoose" id="numRepeatAllMonWenFriFinish"/>
+                                                            <label>ocorrências</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllMonWenFriFinish" class="rdoAllMonWenFri" id="rdoAllMonWenFriAt" data_choose="Em"/></td>
+                                                    <td>
+                                                        <label>Em</label>
+                                                        @Html.TextBox("dateFinishAllMonWenFri", "", new { @class = "datepicker", data_alt_field = "#dateFinishAllMonWenFri" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Resumo:</b></span></td>
+                                        <td><b>Todos os dias, <label id="feedBackAllMonWenFri"></label></b></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="allWeek genericShowTr">
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Repete a cada:</b></span>
+                                        </td>
+                                        <td>
+                                            <input type="text" class="numeberChoose" id="numAllWeek" value="10"/><label>&nbsp;Meses</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Repete:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr><td><input type="checkbox" />D</td>
+                                                <td><input type="checkbox" />S</td>
+                                                <td><input type="checkbox" />T</td>
+                                                <td><input type="checkbox" />Q</td>
+                                                <td><input type="checkbox" />Q</td>
+                                                <td><input type="checkbox" />S</td>
+                                                <td><input type="checkbox" />S</td></tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Início em:</b></span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("dateAllWeek", "", new { @class = "datepicker", data_alt_field = "#dateAllWeek" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Termina em:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllWeekFinish" class="rdoAllWeek" id="rdoAllWeekAwlays" data_choose="Sempre"/></td>
+                                                    <td><label>Sempre</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllWeekFinish" class="rdoAllWeek" id="rdoAllWeekAfter" data_choose="Apos"/></td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Após</label>
+                                                            <input type="text" class="numeberChoose" id="numRepeatAllWeekFinish"/>
+                                                            <label>ocorrências</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllWeekFinish" class="rdoAllWeek" id="rdoAllWeekAt" data_choose="Em"/></td>
+                                                    <td>
+                                                        <label>Em</label>
+                                                        @Html.TextBox("dateFinishAllWeek", "", new { @class = "datepicker", data_alt_field = "#dateFinishAllWeek" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Resumo:</b></span></td>
+                                        <td><b>Todos os dias, <label id="feedBackAllWeek"></label></b></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="allYear genericShowTr">
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Repete a cada</b></span></td>
+                                        <td><input type="text" class="numeberChoose" id="numRepeatAllYear" value=""/><label>&nbsp;dias</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Início em:</b></span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("dateAllYear", "", new { @class = "datepicker", data_alt_field = "#dateAllYear" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Termina em:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllYearFinish" class="rdoAllYear" id="rdoAllYearAwlays" data_choose="Sempre"/></td>
+                                                    <td><label>Sempre</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllYearFinish" class="rdoAllYear" id="rdoAllYearAfter" data_choose="Apos"/></td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Após</label>
+                                                            <input type="text" class="numeberChoose" id="numRepeatAllYearFinish"/>
+                                                            <label>ocorrências</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllYearFinish" class="rdoAllYear" id="rdoAllYearAt" data_choose="Em"/></td>
+                                                    <td>
+                                                        <label>Em</label>
+                                                        @Html.TextBox("dateFinishAllYear", "", new { @class = "datepicker", data_alt_field = "#dateFinishAllYear" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Resumo:</b></span></td>
+                                        <td><b>Todos os dias, <label id="feedBackAllYear"></label></b></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="allDayWeek genericShowTr">
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Início em:</b></span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("dateAllDayWeek", "", new { @class = "datepicker", data_alt_field = "#dateAllDayWeek" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Termina em:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllDayWeekFinish" class="rdoAllDayWeek" id="rdoAllDayWeekAwlays" data_choose="Sempre"/></td>
+                                                    <td><label>Sempre</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllDayWeekFinish" class="rdoAllDayWeek" id="rdoAllDayWeekAfter" data_choose="Apos"/></td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Após</label>
+                                                            <input type="text" class="numeberChoose" id="numRepeatAllDayWeekFinish"/>
+                                                            <label>ocorrências</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllDayWeekFinish" class="rdoAllDayWeek" id="rdoAllDayWeekAt" data_choose="Em"/></td>
+                                                    <td>
+                                                        <label>Em</label>
+                                                        @Html.TextBox("dateFinishAllDayWeek", "", new { @class = "datepicker", data_alt_field = "#dateFinishAllDayWeek" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Resumo:</b></span></td>
+                                        <td><b>Todos os dias, <label id="feedBackAllDayWeek"></label></b></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="allTueThu genericShowTr">
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Início em:</b></span>
+                                        </td>
+                                        <td>
+                                            @Html.TextBox("dateAllTueThu", "", new { @class = "datepicker", data_alt_field = "#dateAllTueThu" })
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="separatorDiv"><b>Termina em:</b></span>
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllTueThuFinish" class="rdoAllTueThu" id="rdoAllTueThuAwlays" data_choose="Sempre"/></td>
+                                                    <td><label>Sempre</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllTueThuFinish" class="rdoAllTueThu" id="rdoAllTueThuAfter" data_choose="Apos"/></td>
+                                                    <td>
+                                                        <div>
+                                                            <label>Após</label>
+                                                            <input type="text" class="numeberChoose" id="numRepeatAllTueThuFinish"/>
+                                                            <label>ocorrências</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="radio" name="reptAllTueThuFinish" class="rdoAllTueThu" id="rdoAllTueThuAt" data_choose="Em"/></td>
+                                                    <td>
+                                                        <label>Em</label>
+                                                        @Html.TextBox("dateFinishAllTueThu", "", new { @class = "datepicker", data_alt_field = "#dateFinishAllTueThu" })
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="separatorDiv"><b>Resumo:</b></span></td>
+                                        <td><b>Todos os dias, <label id="feedBackAllTueThu"></label></b></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="submitForm" style="margin-right: 20px;" class="formRight">
+                    <input type="button" class="greyishBtn carregaLoad" value="Cancelar" onclick="NavigateToUrl('@Url.Action("Index")')">
+                    <input id="buttonBackPvSendProgram" type="button" class="greyishBtn carregaLoad"
+                        value="<< Anterior" data_url="pvSendSegmentation">
+                    <input id="buttonConfirmCampaing" type="button" value="Concluir" class="blueBtn carregaLoad"/>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div> 
+
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $(".genericShowTr").hide();
+        $(".allMonth").show();
+        $(".styleded, .styleded select, .datatable-header select, input:checkbox, input:radio, input:file").uniform();
+        $("#numRepeatAllMonth").spinner({ min: 0, max: 12 });
+        $("#numRepeatAllMonthFinish").spinner({ min: 0 });
+        $(".numeberChoose").spinner();
+        $('#calendar').fullCalendar({
+            header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,agendaWeek,agendaDay'
+				},
+            lang: 'pt-br',
+            editable: true,
+            events: [
+				{
+				    title: 'All Day Event',
+				    start: '2014-06-01'
+				},
+				{
+				    title: 'Long Event',
+				    start: '2014-06-07',
+				    end: '2014-06-10'
+				},
+				{
+				    id: 999,
+				    title: 'Repeating Event',
+				    start: '2014-06-09T16:00:00'
+				},
+				{
+				    id: 999,
+				    title: 'Repeating Event',
+				    start: '2014-06-16T16:00:00'
+				},
+				{
+				    title: 'Meeting',
+				    start: '2014-06-12T10:30:00',
+				    end: '2014-06-12T12:30:00'
+				},
+				{
+				    title: 'Lunch',
+				    start: '2014-06-12T12:00:00'
+				},
+				{
+				    title: 'Birthday Party',
+				    start: '2014-06-13T07:00:00'
+				},
+				{
+				    title: 'Click for Google',
+				    url: 'http://google.com/',
+				    start: '2014-06-28'
+				}
+			]
+        });
+
+        $(document).on("click", ".rdoAllMonth", function () {
+            switch ($(this).attr("data_choose")) {
+                case 'Sempre':
+                    $("#feedBackAllMonth").html("Sempre");
+                    break;
+                case 'Apos':
+                    $("#feedBackAllMonth").html("");
+                    break;
+                case 'Sempre':
+                    $("#feedBackAllMonth").html("");
+                    break;
+            }
+        });
+
+        $(document).on("click", ".rdoAllDay", function () {
+            switch ($(this).attr("data_choose")) {
+                case 'Sempre':
+                    $("#feedBackAllDay").html("Sempre");
+                    break;
+                case 'Apos':
+                    $("#feedBackAllDay").html("");
+                    break;
+                case 'Sempre':
+                    $("#feedBackAllDay").html("");
+                    break;
+            }
+        });
+
+        $("#dateFinishAllMonth").datepicker({
+            onSelect: function (date) {
+                var dateIni = $("#dateAllMonth").datepicker('getDate');
+                var dateFim = $(this).datepicker('getDate');
+                var dateTextIni = $.datepicker.formatDate("dd/mm/yy", dateIni);
+                var dateTextFim = $.datepicker.formatDate("dd/mm/yy", dateFim);
+
+                $("#feedBackAllMonth").html("Em início: " + dateTextIni + " fim: " + dateTextFim);
+            }
+        });
+
+        $("#dateFinishAllDay").datepicker({
+            onSelect: function (date) {
+                var dateIni = $("#dateAllDay").datepicker('getDate');
+                var dateFim = $(this).datepicker('getDate');
+                var dateTextIni = $.datepicker.formatDate("dd/mm/yy", dateIni);
+                var dateTextFim = $.datepicker.formatDate("dd/mm/yy", dateFim);
+
+                $("#feedBackAllDay").html("Em início: " + dateTextIni + " fim: " + dateTextFim);
+            }
+        });
+
+        $(document).on("keyup", "#numRepeatAllMonthFinish", function () {
+            $("#feedBackAllMonth").html("Após " + $("#numRepeatAllMonthFinish").val() + " ocorrências");
+        });
+
+        $(document).on("change", "#sltRepeater", function () {
+            $(".genericShowTr").hide(100);
+            var strHideShow = $(this).val();
+            $("." + strHideShow).show(100);
+        });
+
+        $(".datepicker").datepicker({
+            dateFormat: 'dd/mm/yy',
+            altFormat: "yymmdd",
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Mar&ccedil;o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior'
+        });
+    });
+</script>
